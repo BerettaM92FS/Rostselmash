@@ -14,12 +14,16 @@ public class ButtonPanel extends JPanel {
     private final JButton txtExport = new JButton("Экспорт TXT");
     private final JButton excelImport = new JButton("Импорт Excel");
     private final JButton txtImport = new JButton("Импорт ТХТ");
+    private final JButton up = new JButton("Вверх");
+    private final JButton down = new JButton("Вниз");
 
     public ButtonPanel() {
-        GridLayout gridLayout = new GridLayout(2, 3, 10, 10);
+        GridLayout gridLayout = new GridLayout(2, 4, 10, 10);
         setLayout(gridLayout);
         add(add);
         add(del);
+        add(up);
+        add(down);
         add(excelExport);
         add(txtExport);
         add(excelImport);

@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 @AllArgsConstructor
-public class ExcelTxtExportButtonListener implements ActionListener {
+public class ExcelTxtExportButtonListener extends UsersTableValue implements ActionListener {
     private DefaultTableModel model;
     private JTable table;
     private DocumentType type;
@@ -38,24 +38,11 @@ public class ExcelTxtExportButtonListener implements ActionListener {
                     FileOutputStream fos = new FileOutputStream(file);
                     fos.close();
                 }
-                service.export(getTableValue(table, model), file).close();
+                service.export(getTableValue(model, table), file).close();
 
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
-    }
-
-    private List<User> getTableValue(JTable table, DefaultTableModel model) {
-        List<User> users = new ArrayList<>();
-        for (int i = 0; i < table.getRowCount(); i++) {
-            int row = table.convertRowIndexToModel(i);
-            String name = String.valueOf(model.getValueAt(row, 0));
-            String lastName = String.valueOf(model.getValueAt(row, 1));
-            if(!name.equals("") || (!lastName.equals(""))) {
-                users.add(new User(name, lastName));
-            }
-        }
-        return users;
     }
 }

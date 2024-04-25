@@ -1,10 +1,7 @@
 package ru.rostselmash.ui.form;
 
 import ru.rostselmash.domain.DocumentType;
-import ru.rostselmash.ui.listener.AddButtonListener;
-import ru.rostselmash.ui.listener.DelButtonListener;
-import ru.rostselmash.ui.listener.ExcelTxtExportButtonListener;
-import ru.rostselmash.ui.listener.ExcelTxtImportButtonListener;
+import ru.rostselmash.ui.listener.*;
 import ru.rostselmash.ui.panel.ButtonPanel;
 
 import javax.swing.*;
@@ -57,6 +54,8 @@ public class MainForm extends JFrame {
         buttonPanel.getTxtExport().addActionListener(new ExcelTxtExportButtonListener(model, table, DocumentType.TXT));
         buttonPanel.getExcelImport().addActionListener(new ExcelTxtImportButtonListener(model, DocumentType.EXCEL));
         buttonPanel.getTxtImport().addActionListener(new ExcelTxtImportButtonListener(model, DocumentType.TXT));
+        buttonPanel.getUp().addActionListener(new UpDownButtonListener(model, table, true));
+        buttonPanel.getDown().addActionListener(new UpDownButtonListener(model, table, false));
         container.add(buttonPanel, BorderLayout.SOUTH);
         setTitle("Пользователи");
         setSize(600, 400);
